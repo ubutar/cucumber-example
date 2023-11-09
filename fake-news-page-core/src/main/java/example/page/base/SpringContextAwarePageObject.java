@@ -3,8 +3,6 @@ package example.page.base;
 import example.page.config.PagesProperties;
 import org.springframework.context.ApplicationContext;
 
-import java.util.Map;
-
 public class SpringContextAwarePageObject {
 
     protected static ApplicationContext applicationContext;
