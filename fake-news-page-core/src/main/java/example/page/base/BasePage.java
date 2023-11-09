@@ -1,6 +1,8 @@
 package example.page.base;
 
 import example.page.constant.PageConstants;
+import lombok.extern.java.Log;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -12,6 +14,7 @@ import ub.code.annotations.DirectUrl;
 import java.time.Duration;
 import java.util.Optional;
 
+@Log
 public abstract class BasePage extends SpringContextAwarePageObject {
 
     protected WebDriver driver;
@@ -27,17 +30,27 @@ public abstract class BasePage extends SpringContextAwarePageObject {
     }
 
     public void singleClickConsent(WebElement frame, WebElement accept) {
-        WebDriverWait consentPanelWait = new WebDriverWait(driver,
-                Duration.ofSeconds(Long.parseLong(getPageProperty(PageConstants.GUARDIAN_PAGE_MINOR_EVENT_TIMEOUT))));
-        consentPanelWait.until(ExpectedConditions.visibilityOf(frame));
+        minorWait(frame);
         frameSingleClick.execute(frame, accept);
     }
+
+    public abstract BasePage handleConsenting();
 
     public BasePage openDirectly() {
         Optional.of(this.getClass().getAnnotation(DirectUrl.class))
                 .ifPresent(annotation -> driver.navigate().to(getPageProperty(annotation.propertyKey()))
         );
         return this;
+    }
+
+    public void minorWait(WebElement webElement) {
+        try {
+            WebDriverWait minorTimeoutElementWait = new WebDriverWait(driver,
+                    Duration.ofSeconds(Long.parseLong(getPageProperty(PageConstants.PAGE_MINOR_EVENT_TIMEOUT))));
+            minorTimeoutElementWait.until(ExpectedConditions.visibilityOf(webElement));
+        } catch (TimeoutException e) {
+            log.warning("Tried waiting for minor element visibility event: it never happened");
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package step.news;
 
+import example.page.google.GoogleStarterPage;
 import example.page.guardian.TheGuardianTonePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,12 +22,21 @@ public class TheGuardianStepDefinitions {
         Thread.sleep(5000);
 
         TheGuardianTonePage tonePage = (TheGuardianTonePage) new TheGuardianTonePage(browserFactory.getWebDriver())
-                .openDirectly().acceptCookieSettings();
-        System.out.println("First title is: "+tonePage.getFirstTitle());
-        System.out.println(browserFactory.getWebDriver().manage().timeouts().getImplicitWaitTimeout());
+                .openDirectly();
+
+        Thread.sleep(5000);
+
+        tonePage.handleConsenting();
+
+        String title = tonePage.getFirstTitle();
+        System.out.println("First title is: "+title);
+
+        Thread.sleep(5000);
+
+        new GoogleStarterPage(browserFactory.getWebDriver()).openDirectly().handleConsenting().searchByText(title);
 
 
-        Thread.sleep(2000);
+        Thread.sleep(10000);
     }
 
     @When("it is executed")

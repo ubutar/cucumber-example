@@ -9,8 +9,7 @@
         <version>0.1</version>
     </parent>
 
-    <artifactId>fake-news-definitions</artifactId>
-    <version>0.1</version>
+    <artifactId>fake-news-page-google</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -18,25 +17,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>ub.code</groupId>
-            <artifactId>fake-news-definitions-core</artifactId>
+            <artifactId>fake-news-page-core</artifactId>
             <version>0.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>ub.code</groupId>
-            <artifactId>fake-news-page-guardian</artifactId>
-            <version>0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ub.code</groupId>
-            <artifactId>fake-news-page-google</artifactId>
-            <version>0.1</version>
-        </dependency>
     </dependencies>
 
 </project>

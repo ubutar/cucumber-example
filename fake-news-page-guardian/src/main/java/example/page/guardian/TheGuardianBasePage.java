@@ -26,7 +26,7 @@ public class TheGuardianBasePage extends BasePage {
         super(driver);
     }
 
-    public TheGuardianBasePage acceptCookieSettings() {
+    public TheGuardianBasePage handleConsenting() {
         super.singleClickConsent(bottomMessageIframe, yesIamHappy);
         return this;
     }
