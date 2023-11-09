@@ -1,5 +1,6 @@
 package step.news;
 
+import example.page.guardian.TheGuardianTonePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,9 +17,12 @@ public class TheGuardianStepDefinitions {
     @SneakyThrows
     @Given("this does smth in thread")
     public void thisReadsAndWritesProperties() {
-        System.out.println("this reads and writes properties");
-        browserFactory.getWebDriver().get("http://example.com");
-        Thread.sleep(10000);
+        System.out.println("this opens guardian");
+
+        TheGuardianTonePage tonePage = (TheGuardianTonePage) new TheGuardianTonePage(browserFactory.getWebDriver()).openDirectly();
+        Thread.sleep(20000);
+        tonePage.acceptCookieSettings();
+        Thread.sleep(5000);
     }
 
     @When("it is executed")
@@ -31,7 +35,6 @@ public class TheGuardianStepDefinitions {
     @Then("it will be executed")
     public void itWillBeExecuted() {
         System.out.println("it will be executed");
-        System.out.println(browserFactory.getWebDriver().getPageSource());
     }
 
     @SneakyThrows

@@ -21,7 +21,7 @@ public class BrowserFactory {
             System.setProperty("webdriver.remote.server", browserConfig.getRemoteDriverUrl());
             return new RemoteWebDriver(browserConfig.getDesiredCapabilities());
         } else {
-            // TODO given docker, do we really need this option here?
+            // TODO given docker and client-server architecture of SWD, do we really need this option here?
         }
         return null;
     });

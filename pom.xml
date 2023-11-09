@@ -23,6 +23,8 @@
         <module>fake-news-tests</module>
         <module>fake-news-definitions-core</module>
         <module>fake-news-tests-core</module>
+        <module>fake-news-page-core</module>
+        <module>fake-news-page-guardian</module>
     </modules>
 
     <properties>
