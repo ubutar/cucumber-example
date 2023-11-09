@@ -14,7 +14,7 @@ public class SpringContextAwarePageObject {
     }
 
     public String getPageProperty(String propertyKey) {
-        Map bean = applicationContext.getBean(PagesProperties.PagesPropertiesMap.class);
+        PagesProperties.PagesPropertiesMap bean = applicationContext.getBean(PagesProperties.PagesPropertiesMap.class);
         return bean.get(propertyKey).toString();
     }
 }
