@@ -35,4 +35,9 @@ public class TheGuardianBasePage extends BasePage {
         closeSupportBanner.click();
         return this;
     }
+
+    @Override
+    public TheGuardianBasePage openDirectly() {
+        return (TheGuardianBasePage) super.openDirectly();
+    }
 }

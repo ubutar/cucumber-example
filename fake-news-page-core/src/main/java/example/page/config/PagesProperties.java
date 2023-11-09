@@ -18,11 +18,15 @@ public class PagesProperties {
     @Value("${"+PageConstants.GOOGLE_SEARCH_PAGE_KEY+"}")
     private String googleSearchPage;
 
+    @Value("${"+PageConstants.GUARDIAN_PAGE_MINOR_EVENT_TIMEOUT+"}")
+    private Integer guardianPageMinorTimeout;
+
     @Bean
     public PagesPropertiesMap getPagePropertiesMap() {
         PagesPropertiesMap map = new PagesPropertiesMap();
         map.put(PageConstants.GOOGLE_SEARCH_PAGE_KEY, googleSearchPage);
         map.put(PageConstants.GUARDIAN_TONE_PAGE_KEY, guardianTonePage);
+        map.put(PageConstants.GUARDIAN_PAGE_MINOR_EVENT_TIMEOUT, guardianPageMinorTimeout);
         return map;
     }
 

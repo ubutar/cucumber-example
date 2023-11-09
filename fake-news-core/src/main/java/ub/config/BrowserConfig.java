@@ -24,6 +24,9 @@ public class BrowserConfig {
     @Value("${remote.driver.capabilities.json}")
     private String remoteDriverCapabilitiesJson;
 
+    @Value("${driver.implicit.wait}")
+    private Integer driverImplicitWait;
+
     @Bean
     @SneakyThrows
     public DesiredCapabilities getDesiredCapabilities() {

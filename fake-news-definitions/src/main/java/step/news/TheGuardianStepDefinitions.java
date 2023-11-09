@@ -18,11 +18,15 @@ public class TheGuardianStepDefinitions {
     @Given("this does smth in thread")
     public void thisReadsAndWritesProperties() {
         System.out.println("this opens guardian");
-
-        TheGuardianTonePage tonePage = (TheGuardianTonePage) new TheGuardianTonePage(browserFactory.getWebDriver()).openDirectly();
-        Thread.sleep(20000);
-        tonePage.acceptCookieSettings();
         Thread.sleep(5000);
+
+        TheGuardianTonePage tonePage = (TheGuardianTonePage) new TheGuardianTonePage(browserFactory.getWebDriver())
+                .openDirectly().acceptCookieSettings();
+        System.out.println("First title is: "+tonePage.getFirstTitle());
+        System.out.println(browserFactory.getWebDriver().manage().timeouts().getImplicitWaitTimeout());
+
+
+        Thread.sleep(2000);
     }
 
     @When("it is executed")
