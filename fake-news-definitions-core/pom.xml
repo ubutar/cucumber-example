@@ -33,6 +33,12 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-spring</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>ub.code</groupId>
+            <artifactId>fake-news-utils</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
 </project>
