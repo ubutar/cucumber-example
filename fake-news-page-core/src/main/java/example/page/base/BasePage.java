@@ -6,6 +6,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ub.code.action.FrameAction;
@@ -13,6 +14,7 @@ import ub.code.annotations.DirectUrl;
 
 import java.time.Duration;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 @Log
 public abstract class BasePage extends SpringContextAwarePageObject {
@@ -44,13 +46,24 @@ public abstract class BasePage extends SpringContextAwarePageObject {
     }
 
     public void minorWait(WebElement webElement) {
+        minorWait(() -> ExpectedConditions.visibilityOf(webElement), "element visibility");
+    }
+
+    public void minorWait(ExpectedCondition<?> ec) {
+        minorWait(() -> ec, "condition");
+    }
+
+    private void minorWait(Supplier<ExpectedCondition<?>> conditionSupplier, String description) {
         try {
-            WebDriverWait minorTimeoutElementWait = new WebDriverWait(driver,
-                    Duration.ofSeconds(Long.parseLong(getPageProperty(PageConstants.PAGE_MINOR_EVENT_TIMEOUT))));
-            minorTimeoutElementWait.until(ExpectedConditions.visibilityOf(webElement));
+            withMinorTimeout().until(conditionSupplier.get());
         } catch (TimeoutException e) {
-            log.warning("Tried waiting for minor element visibility event: it never happened");
+            log.warning("Tried waiting for minor "+description+": it never happened");
         }
+    }
+
+    private WebDriverWait withMinorTimeout() {
+        return new WebDriverWait(driver,
+                Duration.ofSeconds(Long.parseLong(getPageProperty(PageConstants.PAGE_MINOR_EVENT_TIMEOUT))));
     }
 
 

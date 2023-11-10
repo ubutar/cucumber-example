@@ -33,7 +33,9 @@ public class TheGuardianStepDefinitions {
 
         Thread.sleep(5000);
 
-        new GoogleStarterPage(browserFactory.getWebDriver()).openDirectly().handleConsenting().searchByText(title);
+        System.out.println(new GoogleStarterPage(browserFactory.getWebDriver()).openDirectly()
+                .handleConsenting().searchByText(title).waitForSearchResults().exceptSource("The Guardian")
+                .size());
 
 
         Thread.sleep(10000);
