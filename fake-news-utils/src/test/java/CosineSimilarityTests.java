@@ -13,10 +13,10 @@ public class CosineSimilarityTests {
     @Test
     public void testCosineSimilarity() {
         String textA =
-                "Wonderland-Elbonia war live: reports of Wonderland strikes close to something in " +
-                        "Unknown as fighting intensifies";
+                "Wonderland-Elbonia interactions live: reports of Wonderland acting close to something in " +
+                        "Unknown as uncertainty intensifies";
         String textB =
-                "Wonderland-Elbonia war live updates: Unknown yet another ministry says something hit in overnight strikes; " +
+                "Wonderland-Elbonia interactions live updates: Unknown yet another ministry says something happened in overnight actions; " +
                         "Wonderland agrees daily agreements";
 
         assert util.cosineSimilarity(textA, textB) > 0.7;
