@@ -13,7 +13,7 @@ public class GoogleBasePage extends BasePage {
     };
 
     @FindBy(xpath = "(//button[@id][@data-ved])[3]")
-    public WebElement acceptAllCookies;
+    private WebElement acceptAllCookies;
 
     public GoogleBasePage(WebDriver driver) {
         super(driver);

@@ -39,6 +39,12 @@
             <artifactId>fake-news-utils</artifactId>
             <version>0.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>ub.code</groupId>
+            <artifactId>fake-news-services</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
 </project>

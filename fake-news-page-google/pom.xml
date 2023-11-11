@@ -24,6 +24,11 @@
             <version>0.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>ub.code</groupId>
+            <artifactId>fake-news-object-model</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
 </project>

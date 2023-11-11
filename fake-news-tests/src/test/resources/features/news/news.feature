@@ -1,16 +1,12 @@
-Feature: Exclusive resources
+Feature: Routinely confirming that top news in 'The Guardian' feed is somewhat authentic
 
-  Scenario: 0th example
-    Given test always passes
-    And everyone is happy
+  Imagine you are building news validation mechanism to prevent fake news.
+  You would need to take news and check them v. other sources
 
-  Scenario: first example
-    Given this does smth in thread
-    When it is executed
-    Then it will be executed
+  Background:
+    Given The Guardian news feed is open
 
-  @off
-  Scenario: second example
-    Given this does smth in another thread
-    When it is executed
-    Then it will be executed
+  Scenario: Top news is usually authentic
+    When first news on the tone feed is taken
+    And news title is searched for in Google
+    Then there should be at least 2 Google search results

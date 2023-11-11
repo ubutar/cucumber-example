@@ -7,6 +7,8 @@ import step.context.DefinitionsConfiguration;
 import ub.code.base.DriverConfiguration;
 
 @CucumberContextConfiguration
-@SpringBootTest(classes = {DriverConfiguration.class, PagesConfiguration.class, DefinitionsConfiguration.class})
+@SpringBootTest(classes = {
+        DefinitionsConfiguration.class
+})
 public class SpringTogether {
 }
