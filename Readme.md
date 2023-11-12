@@ -23,3 +23,4 @@ By default, solution assumes `localhost` as hub host, it can be changed from com
 1. SpringBoot + Cucumber + Junit5 + Selenium 4
 2. Works in parallel if enough concurrency available on Hub
 3. Some tests should fail occasionally (by design)
+4. Builds and runs as early as Java 8
