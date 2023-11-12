@@ -8,7 +8,8 @@
 or any other grid, hub and node names, if by chance those already exist
 
 #### Run
-by calling maven's `clean install` from project root
+by calling maven's `clean install` from project root\
+or `clean verify` from `fake-news-tests`
 
 #### Configuration
 Check `fake-news-tests` module, `src/test/java/resources` for features and configs.\

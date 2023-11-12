@@ -1,6 +1,6 @@
 package ub.code.services;
 
-import example.page.guardian.TheGuardianTonePage;
+import ub.code.page.guardian.TheGuardianTonePage;
 import org.springframework.stereotype.Component;
 
 @Component

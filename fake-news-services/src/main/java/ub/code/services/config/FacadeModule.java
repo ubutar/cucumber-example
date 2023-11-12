@@ -1,10 +1,10 @@
 package ub.code.services.config;
 
-import example.page.config.PagesConfiguration;
+import ub.code.page.core.config.PagesConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import ub.code.base.DriverConfiguration;
+import ub.code.core.base.DriverConfiguration;
 
 @Configuration
 @Import({DriverConfiguration.class, PagesConfiguration.class})

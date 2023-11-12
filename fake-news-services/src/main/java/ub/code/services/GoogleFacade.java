@@ -1,7 +1,7 @@
 package ub.code.services;
 
-import example.page.google.GoogleSearchResultPage;
-import example.page.google.GoogleStarterPage;
+import ub.code.page.google.GoogleSearchResultPage;
+import ub.code.page.google.GoogleStarterPage;
 import org.springframework.stereotype.Component;
 import ub.code.model.GoogleSearchResult;
 
