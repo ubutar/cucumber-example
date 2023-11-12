@@ -1,10 +1,11 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ub.util.nlp.CosineSimilarity;
+import ub.util.nlp.Similarity;
 
 public class CosineSimilarityTests {
 
-    public CosineSimilarity util;
+    public Similarity util;
     @BeforeEach
     public void beforeEach() {
         util = new CosineSimilarity();
@@ -19,7 +20,7 @@ public class CosineSimilarityTests {
                 "Wonderland-Elbonia interactions live updates: Unknown yet another ministry says something happened in overnight actions; " +
                         "Wonderland agrees daily agreements";
 
-        assert util.cosineSimilarity(textA, textB) > 0.7;
+        assert util.similarity(textA, textB) > 0.7;
 
     }
 }

@@ -1,6 +1,7 @@
 package example.page.guardian;
 
 import example.page.constant.PageConstants;
+import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,8 +15,8 @@ import java.util.List;
 public class TheGuardianTonePage extends TheGuardianBasePage {
 
     public final static By NEWS_TITLE_RELATIVE_XPATH =
-            By.xpath("//*[contains(@class, 'headline-text') and not(self::a)]");
-    @FindBys(@FindBy(xpath = "//*[@data-id]"))
+            By.xpath(".//*[contains(@class, 'headline-text') and not(self::a)]");
+    @FindBys(@FindBy(xpath = "//*[@data-id and contains(@class, 'fc-item')]"))
     public List<WebElement> availableNewsShortcuts;
 
     public TheGuardianTonePage(WebDriver driver) {
@@ -26,6 +27,14 @@ public class TheGuardianTonePage extends TheGuardianBasePage {
         return availableNewsShortcuts.stream().findFirst()
                 .map(webElement -> webElement.findElement(NEWS_TITLE_RELATIVE_XPATH)
                         .getText()).orElse(null);
+    }
+
+    public String getFirstTitle(String containing) {
+        return availableNewsShortcuts.stream().map(webElement -> webElement.findElement(NEWS_TITLE_RELATIVE_XPATH)
+                        .getText()).filter(
+                                text -> ArrayUtils.contains(text.toLowerCase().split("\\W"),
+                                        containing.toLowerCase()))
+                .findFirst().orElse(null);
     }
 
 }

@@ -1,17 +1,35 @@
 package ub.util.nlp;
 
+import lombok.extern.java.Log;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class CosineSimilarity {
+@Log
+public class CosineSimilarity implements Similarity {
+
+    public static boolean VERBOSE = false;
+
+    @Override
+    public double similarity(String s1, String s2) {
+        return cosineSimilarity(s1, s2);
+    }
 
     public double cosineSimilarity(String one, String two) {
         List<String> wordsOne = Arrays.asList(one.split("\\W"));
         List<String> wordsTwo = Arrays.asList(two.split("\\W"));
 
-        return cosineSimilarity(wordsOne, wordsTwo);
+        double cosine = cosineSimilarity(wordsOne, wordsTwo);
+
+        if(VERBOSE) {
+            log.info("CosineSimilarity between\n" + one +
+                    "and\n" + two +
+                    "is " + cosine);
+        }
+
+        return cosine;
     }
 
     private double cosineSimilarity(List<String> wordsOne, List<String> wordsTwo) {

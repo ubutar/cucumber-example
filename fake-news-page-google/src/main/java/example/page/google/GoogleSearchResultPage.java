@@ -22,6 +22,9 @@ public class GoogleSearchResultPage extends GoogleBasePage {
     public static final By resultTitleRelativeLocator =
             By.xpath(".//*[@data-snhf='0']//*[self::h3 or self::h2]");
 
+    public static final By resultSourceRelativeLocator =
+            By.xpath(".//*[@data-snhf='0']//*[contains(@class, 'notranslate')]//*[contains(@class, 'VuuXrf')]");
+
     @FindBys(@FindBy(xpath = singleSearchResultPreview))
     private List<WebElement> searchResultPreviews;
 
@@ -41,9 +44,14 @@ public class GoogleSearchResultPage extends GoogleBasePage {
     }
 
     public List<GoogleSearchResult> getSearchResults() {
-        return searchResultPreviews.stream().map(result -> new GoogleSearchResult(
-                result.findElement(resultUrlRelativeLocator).getAttribute("href"),
-                result.findElement(resultTitleRelativeLocator).getText())).collect(Collectors.toList());
+        return searchResultPreviews.stream().map(result -> {
+                    GoogleSearchResult gsr = new GoogleSearchResult(
+                            result.findElement(resultUrlRelativeLocator).getAttribute("href"),
+                            result.findElement(resultTitleRelativeLocator).getText());
+                    gsr.setSource(result.findElement(resultSourceRelativeLocator).getText());
+                    return gsr;
+                }
+        ).collect(Collectors.toList());
     }
 
 }

@@ -16,4 +16,8 @@ public class GuardianFacade extends WebFacade {
         return new TheGuardianTonePage(browserFactory.getWebDriver()).getFirstTitle();
     }
 
+    public String takeFirstNewsFeedTitleWithKeyWord(String keyWord) {
+        return new TheGuardianTonePage(browserFactory.getWebDriver()).getFirstTitle(keyWord);
+    }
+
 }

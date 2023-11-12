@@ -26,9 +26,12 @@ public class BrowserFactory {
             webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(browserConfig.getDriverImplicitWait()));
             return webDriver;
         } else {
-            // TODO given docker and client-server architecture of SWD, do we really need this option here?
+            //  Given availability of containers
+            //  and client-server architecture of Selenium WebDriver,
+            //  this option is really unnecessary
+            throw new UnsupportedOperationException("'Local' WebDriver creation is not supported yet");
         }
-        return null;
+
     });
 
     public WebDriver getWebDriver() {
@@ -37,5 +40,6 @@ public class BrowserFactory {
 
     public void destroyWebDriver() {
         threadLocalWebDriver.get().quit();
+        threadLocalWebDriver.remove();
     }
 }
