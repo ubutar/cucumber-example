@@ -59,13 +59,11 @@ public class TheGuardianWebDefinitions extends TheGuardianBase {
         MatcherAssert.assertThat(context.get(GuardianTestContext.ContextVar.NEWS_TITLE), notNullValue());
     }
 
-    @SuppressWarnings("unchecked")
     @And("there is/are at least {int} result(s) with similarity {double} or more")
     public void thereAreAtLeastResultsWithSimilarityScoreOrMore(int resultsCount, double score) {
         assertThat(googleResultsExceedingSimilarityThreshold(score), greaterThanOrEqualTo(resultsCount));
     }
 
-    @SuppressWarnings("unchecked")
     @But("no more than {int} result(s) with similarity more than {double}")
     public void noMoreThanResultsWithSimilarityMoreThanScore(int countResults, double score) {
         assertThat(googleResultsExceedingSimilarityThreshold(score), lessThanOrEqualTo(countResults));
