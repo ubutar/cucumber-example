@@ -27,6 +27,7 @@
         <module>fake-news-page-guardian</module>
         <module>fake-news-page-google</module>
         <module>fake-news-object-model</module>
+        <module>fake-news-testng-tests</module>
     </modules>
 
     <properties>

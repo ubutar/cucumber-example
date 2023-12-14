@@ -13,7 +13,9 @@ public class DriverManagementSteps {
 
     @After
     public void tearDownThreadDriver() {
-        log.info(String.format("Quitting WebDriver %d", browserFactory.getWebDriver().hashCode()));
-        browserFactory.destroyWebDriver();
+        if(browserFactory != null) {
+            log.info(String.format("Quitting WebDriver %d", browserFactory.getWebDriver().hashCode()));
+            browserFactory.destroyWebDriver();
+        }
     }
 }
